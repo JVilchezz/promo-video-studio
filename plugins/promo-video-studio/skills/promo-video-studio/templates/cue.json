@@ -1,0 +1,25 @@
+{
+  "duration": 30.0,
+  "style": "uplifting",
+  "bpm": 96,
+  "key": "D",
+  "seed": 7,
+  "sections": [
+    {"start": 0.0,  "energy": 0.15},
+    {"start": 5.0,  "energy": 0.45},
+    {"start": 10.0, "energy": 0.8},
+    {"start": 17.5, "energy": 0.6, "build": true},
+    {"start": 20.0, "energy": 1.0},
+    {"start": 25.0, "energy": 0.3}
+  ],
+  "hits": [10.0, 20.0],
+  "silence_before": [20.0],
+  "cuts": [5.0, 10.0, 17.5, 25.0],
+  "end": 27.5,
+  "sfx": [
+    {"type": "write", "t": 1.0, "dur": 1.6},
+    {"type": "thud", "t": 6.3},
+    {"type": "riser", "t": 18.0, "dur": 2.0},
+    {"type": "sweep", "t": 21.5}
+  ]
+}

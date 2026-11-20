@@ -1,0 +1,75 @@
+<!doctype html><html><head><meta charset="utf-8">
+<meta name="pvs-size" content="1080x1920">
+<!-- Example: "new version" feature update — version pop, mascot glory moment, phone demo with captions, update CTA.
+     Add a voice-over with voice.py and "voice" in cue.json (see reference/voiceover.md). Fictional brand. -->
+<link rel="stylesheet" href="pvs/base.css">
+<style>
+html,body{width:1080px;height:1920px}
+:root{--dark:#1F3480;--dark2:#0B1A4A;--light:#FAF4EC;--accent:#F2C352;--accent2:#C9573F;--ink:#1F3480}
+.bub{max-width:330px;padding:16px 20px;border-radius:22px;font-size:22px;line-height:1.35;margin:10px 18px}
+</style></head><body>
+
+<div class="S dark" id="s1">
+ <div class="c D" id="v1" style="top:640px;font-size:56px;color:var(--accent);letter-spacing:14px">NEW VERSION</div>
+ <div class="c D" id="v2" style="top:720px;font-size:330px;color:var(--light);line-height:1">2.0</div>
+ <div class="c D" id="v3" style="top:1130px;font-size:70px;color:var(--light);letter-spacing:12px">AURORA</div>
+</div>
+
+<div class="S dark" id="s2">
+ <div class="rays" id="rays" style="left:-210px;top:140px;width:1500px;height:1500px"></div>
+ <div id="glow" style="position:absolute;left:90px;top:300px;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(242,193,78,.45),rgba(242,193,78,0) 62%)"></div>
+ <canvas id="spk" width="1080" height="1920" style="position:absolute;left:0;top:0"></canvas>
+ <img id="m" style="position:absolute;left:190px;top:330px;width:700px">
+ <div class="c D" id="t2a" style="top:1180px;font-size:96px;color:var(--light)">AURORA IS NOW</div>
+ <div class="c D" id="t2b" style="top:1300px;font-size:124px;color:var(--accent)">SMARTER.</div>
+</div>
+
+<div class="S paper" id="s3">
+ <div class="c D" id="k3" style="top:140px;font-size:40px;color:var(--accent2);letter-spacing:10px">NEW · ORDER BY VOICE</div>
+ <div class="c D" id="h3a" style="top:200px;font-size:92px;color:var(--ink)">NO MORE SEARCHING.</div>
+ <div class="c D" id="h3b" style="top:305px;font-size:92px;color:var(--accent2)">JUST SAY IT.</div>
+ <div class="phone" id="ph" style="left:310px;top:450px"><div class="screen" style="background:#F4F1EC">
+   <div style="height:120px;background:var(--dark);color:#fff;font-weight:600;font-size:24px;padding:62px 0 0;text-align:center">Aurora assistant</div>
+   <div id="b1" class="bub" style="background:#fff;margin-top:24px">Hi! What would you like today?</div>
+   <div id="b2" class="bub" style="background:var(--dark);color:#fff;margin-left:auto;width:fit-content;margin-right:18px">A large latte with oat milk</div>
+   <div id="b3" class="bub" style="background:#fff">Got it: 1 large latte, oat milk — $4.20. Add it to your cart?</div>
+   <div id="b4" class="bub" style="background:var(--accent);color:var(--dark);font-weight:700;width:fit-content">Yes, add it</div>
+ </div></div>
+ <div id="caps" style="position:absolute;left:0;top:1560px;width:1080px;height:200px"></div>
+</div>
+
+<div class="S dark" id="s4">
+ <img id="m4" style="position:absolute;left:265px;top:150px;width:550px">
+ <div class="c D" id="o1" style="top:760px;font-size:96px;color:var(--light)">UPDATE AURORA</div>
+ <div class="c" id="o2" style="top:880px;font-size:38px;font-weight:500;color:#C9D3EC">and start ordering by voice</div>
+ <div class="c" id="bA" style="top:990px"><div class="badge dark"><i id="iA"></i><div><small>iPhone · Update on the</small>App Store</div></div></div>
+ <div class="c" id="bG" style="top:1180px"><div class="badge light"><i id="iG" style="color:#7A9862"></i><div><small>Android · New version at the</small>link in bio</div></div></div>
+</div>
+
+<script src="pvs/motion.js"></script>
+<script>
+const W=1080,H=1920,END=26;
+const SC=[{id:'s1',start:0,end:3.2},{id:'s2',start:3.2,end:7.6},{id:'s3',start:7.6,end:20.4},{id:'s4',start:20.4,end:26}];
+const CAPS=[[9.6,12.4,'cap','mic','Tap the microphone'],[12.6,15.0,'sub',null,'“A large latte with oat milk”'],
+            [15.2,17.6,'cap','spark','It builds your order'],[17.8,20.2,'cap','check','You confirm. Done.']];
+const CP=captions('caps',CAPS);
+$('iA').innerHTML=ICONS.apple; $('iG').innerHTML=ICONS.android;
+overlays({W,H});
+const MC=[],MW=[];for(let i=1;i<=135;i++){MC.push(`assets/m_celebrate/f_${pad(i)}.png`);MW.push(`assets/m_wave/f_${pad(i)}.png`)}
+ready([...MC,...MW]);
+window.R=function(t){
+  const cur=scenes(SC,t,.5);
+  if(t<3.8){ const k=ease.out4((t-.35)/.9); $('v1').style.opacity=cl((t-.2)/.4); $('v1').style.letterSpacing=(14+20*(1-k))+'px';
+    const v=ease.back((t-.6)/.8); $('v2').style.opacity=cl((t-.6)/.3); $('v2').style.transform=`scale(${.6+.4*v})`; rise('v3',t,1.3,30); }
+  if(t>=3.2&&t<8.2){ const k=t-3.2; seq('m',t,3.4,'assets/m_celebrate',135,30); const a=ease.back((k-.2)/.9);
+    $('m').style.opacity=cl((k-.2)/.25); $('m').style.transform=`scale(${.3+.7*cl(a)+.04*(a-cl(a))})`;
+    rays('rays',t,3.4); $('glow').style.opacity=ease.out4((k-.1)/.8)*(.85+.15*Math.sin(t*3)); sparkles('spk',t,3.5,{cy:700});
+    rise('t2a',t,3.8,40); const b=ease.out4((k-1.1)/.8); $('t2b').style.opacity=cl((k-1.1)/.3); $('t2b').style.transform=`scale(${1.12-.12*b})`; $('t2b').style.filter=b<.99?`blur(${(1-b)*10}px)`:'none'; }
+  if(t>=7.6&&t<21){ rise('k3',t,7.9,20); rise('h3a',t,8.1,40); rise('h3b',t,8.6,40);
+    const a=ease.inOut4((t-7.9)/1.0); $('ph').style.transform=`translateY(${(1-a)*900-8*Math.sin(t*1.1)}px)`;
+    pop('b1',t,9.2,.5,20); pop('b2',t,13.4,.5,20); pop('b3',t,15.6,.5,20); pop('b4',t,18.0,.5,20); CP.update(t); }
+  if(t>=20.4){ seq('m4',t,20.5,'assets/m_wave',135,30); $('m4').style.opacity=cl((t-20.5)/.3); $('m4').style.transform=`translateY(${(1-ease.out4((t-20.5)/.9))*120}px)`;
+    rise('o1',t,21.0,40); rise('o2',t,21.5,20); pop('bA',t,22.1,.6,40); pop('bG',t,22.5,.6,40); }
+  atmosphere(t,{cuts:SC.map(s=>s.start),dark:cur!=='s3',end:END});
+};
+</script></body></html>

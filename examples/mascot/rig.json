@@ -1,0 +1,78 @@
+{
+ "image": "mascot.png",
+ "body_image": "rig_body.png",
+ "body_pivot": [
+  399.7,
+  723.0
+ ],
+ "parts": [
+  {
+   "kind": "leg",
+   "mode": "draw",
+   "pivot": [
+    341.3,
+    701.0
+   ],
+   "end": [
+    266.0,
+    838.0
+   ],
+   "thick": 25.6,
+   "r_end": 22.8,
+   "color": "#3E2618",
+   "z": -1,
+   "name": "leg_l"
+  },
+  {
+   "kind": "leg",
+   "mode": "draw",
+   "pivot": [
+    458.6,
+    700.7
+   ],
+   "end": [
+    535.0,
+    837.0
+   ],
+   "thick": 26.0,
+   "r_end": 22.6,
+   "color": "#3E2618",
+   "z": -1,
+   "name": "leg_r"
+  },
+  {
+   "kind": "arm",
+   "mode": "draw",
+   "pivot": [
+    240.6,
+    469.4
+   ],
+   "end": [
+    103.0,
+    630.0
+   ],
+   "thick": 22.8,
+   "r_end": 26.0,
+   "color": "#3E2618",
+   "z": -1,
+   "name": "arm_l"
+  },
+  {
+   "kind": "arm",
+   "mode": "draw",
+   "pivot": [
+    558.4,
+    470.3
+   ],
+   "end": [
+    695.0,
+    631.0
+   ],
+   "thick": 22.8,
+   "r_end": 26.0,
+   "color": "#3E2618",
+   "z": -1,
+   "name": "arm_r"
+  }
+ ]
+}

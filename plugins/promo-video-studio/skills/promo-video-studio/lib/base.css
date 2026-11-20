@@ -1,0 +1,100 @@
+/* Promo Video Studio · base.css — tokens, fonts and building blocks.
+   Override the tokens in :root of your video page to match the brand.        */
+@font-face{font-family:Display;src:url(fonts/anton-latin-400-normal.woff2)}
+@font-face{font-family:Sans;font-weight:500;src:url(fonts/poppins-latin-500-normal.woff2)}
+@font-face{font-family:Sans;font-weight:600;src:url(fonts/poppins-latin-600-normal.woff2)}
+@font-face{font-family:Sans;font-weight:700;src:url(fonts/poppins-latin-700-normal.woff2)}
+@font-face{font-family:Hand;font-weight:500;src:url(fonts/caveat-latin-500-normal.woff2)}
+@font-face{font-family:Hand;font-weight:700;src:url(fonts/caveat-latin-700-normal.woff2)}
+
+:root{
+  --dark:#12348F;   /* main dark background            */
+  --dark2:#0A1F5C;  /* deeper shade for vignettes      */
+  --light:#FAF4EC;  /* cream / warm white              */
+  --accent:#F2C352; /* ONE warm accent (gold, coral…)  */
+  --accent2:#C44C3F;/* optional second accent           */
+  --ink:#0F3A93;    /* headline color on light scenes  */
+  --muted:#8a847b;  /* secondary text                  */
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{overflow:hidden;font-family:Sans;background:var(--dark2)}
+.S{position:absolute;inset:0;display:none;overflow:hidden}
+.dark{background:radial-gradient(120% 80% at 50% 42%,color-mix(in srgb,var(--dark) 80%,white 12%) 0%,var(--dark) 45%,var(--dark2) 100%)}
+.paper{background:radial-gradient(130% 90% at 50% 40%,#FFFBF4 0%,#F7EFE3 55%,#EADBC4 100%)}
+.D{font-family:Display;letter-spacing:1px}          /* condensed headline */
+.H{font-family:Hand;font-weight:700}                /* handwriting        */
+.c{position:absolute;left:0;width:100%;text-align:center}
+.w{display:inline-block;padding:0 14px}             /* wrap text for write() */
+.kicker{font-family:Display;letter-spacing:8px;color:var(--accent)}
+.photo{filter:sepia(.1) saturate(1.05) contrast(1.04)}
+
+/* polaroid */
+.pol{position:absolute;background:#FCF9F3;padding:24px 24px 110px;box-shadow:0 34px 60px rgba(60,38,14,.28),0 8px 16px rgba(60,38,14,.16);transform-origin:50% 50%}
+.pol img{display:block;object-fit:cover;filter:sepia(.12) saturate(1.05) contrast(1.04)}
+.pol .cap{position:absolute;left:0;right:0;bottom:22px;text-align:center;font-family:Hand;font-weight:700;font-size:54px;color:#33302B}
+
+/* film date stamp */
+.stamp{position:absolute;font-family:'DejaVu Sans Mono',monospace;font-weight:700;font-size:30px;color:#FF9A3C;letter-spacing:2px;text-shadow:0 0 6px rgba(255,120,30,.8),0 0 14px rgba(255,120,30,.45);opacity:.9}
+
+/* phone mockup */
+.phone{position:absolute;width:460px;height:1000px;border-radius:70px;background:#111418;padding:12px;box-shadow:0 60px 110px rgba(10,20,60,.28),0 12px 24px rgba(10,20,60,.14),inset 0 0 0 2px #2b2f36}
+.phone .screen{width:436px;height:976px;border-radius:59px;overflow:hidden;position:relative;background:#fff}
+.phone:after{content:'';position:absolute;inset:12px;border-radius:59px;background:linear-gradient(115deg,rgba(255,255,255,.14),rgba(255,255,255,0) 30%,rgba(255,255,255,0) 72%,rgba(255,255,255,.05));pointer-events:none}
+
+/* notification card (iOS-like) */
+.nt{position:absolute;left:0;top:0;width:940px;height:180px;border-radius:42px;background:rgba(247,244,239,.95);box-shadow:0 24px 50px rgba(0,0,0,.3);display:flex;align-items:center;gap:28px;padding:0 36px}
+.nt .ic{width:104px;height:104px;border-radius:24px;flex:none;object-fit:cover}
+.nt .tx{flex:1;min-width:0}
+.nt .hd{display:flex;justify-content:space-between;font-size:24px;font-weight:600;color:#6d6d6d;letter-spacing:.5px}
+.nt .ti{font-size:34px;font-weight:700;color:#141414;margin-top:2px}
+.nt .bd{font-size:28px;font-weight:500;color:#3a3a3a;margin-top:2px;white-space:nowrap}
+
+/* stat tile */
+.stat{position:absolute;border-radius:36px;padding:44px 40px}
+.stat .n{font-family:Display;font-size:130px;line-height:1}
+.stat .k{font-weight:700;font-size:30px;margin-top:20px;line-height:1.25}
+
+/* light sweep (needs -webkit-mask-image:url(data:…) set inline) */
+.sweep{position:absolute;inset:0;-webkit-mask-size:100% 100%;-webkit-mask-repeat:no-repeat;opacity:0;
+  background:linear-gradient(110deg,rgba(255,255,255,0) 42%,rgba(255,252,235,.8) 50%,rgba(255,255,255,0) 58%);background-size:300% 100%;background-repeat:no-repeat}
+
+/* captions (voice-over / demo) */
+.cap{position:absolute;left:50%;transform-origin:50% 100%;display:flex;align-items:center;gap:18px;white-space:nowrap;translate:-50% 0;
+  padding:22px 36px;border-radius:999px;background:rgba(10,20,60,.88);color:#FAF4EC;font-weight:700;font-size:40px;box-shadow:0 20px 40px rgba(0,0,0,.25)}
+.cap i{font-size:44px;color:var(--accent);display:flex}
+.sub{position:absolute;left:50%;translate:-50% 0;max-width:900px;flex-wrap:wrap;justify-content:center;gap:0 12px;text-align:center;
+  font-family:Hand;font-weight:700;font-size:64px;color:var(--ink);line-height:1.15}
+.sub .wd{transition:none}
+
+/* messaging conversation (chatUI) — put inside .phone .screen or any box */
+.chat{position:relative;width:100%;height:100%;background:#EEE3D7;overflow:hidden;font-family:Sans}
+.chat .ch-sb{position:absolute;top:0;left:0;right:0;height:70px;background:#F4EFE7;z-index:3;padding:24px 44px;font-weight:600;font-size:20px;color:#111}
+.chat .ch-hd{position:absolute;top:70px;left:0;right:0;height:72px;background:#F4EFE7;display:flex;align-items:center;gap:12px;padding-left:20px;border-bottom:1px solid #e3d9cb;z-index:3}
+.chat .ch-back{font-size:26px;color:#555}
+.chat .ch-av{width:40px;height:40px;border-radius:50%;background:#D98A4E;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:18px}
+.chat .ch-nm{font-weight:600;font-size:18px;color:#111}.chat .ch-st{font-size:13px;color:#777;margin-top:1px}
+.chat .ch-list{position:absolute;left:0;right:0;bottom:96px;display:flex;flex-direction:column;gap:12px;padding:0 16px}
+.chat .ch-m{max-width:76%;padding:12px 14px 6px;border-radius:16px;font-size:19px;line-height:1.38;color:#111;box-shadow:0 1px 1px rgba(0,0,0,.06);transform-origin:bottom}
+.chat .ch-m.me{align-self:flex-end;background:#D7F2C8;border-bottom-right-radius:6px}
+.chat .ch-m.them{align-self:flex-start;background:#fff;border-bottom-left-radius:6px}
+.chat .ch-tm{display:block;text-align:right;font-size:12px;color:#8a8a8a;margin-top:4px}.chat .ch-tk{color:#4fb6ec;margin-left:4px}
+.chat .ch-typ{align-self:flex-start;background:#fff;border-radius:16px;padding:14px 18px;display:flex;gap:6px}
+.chat .ch-typ i{width:8px;height:8px;border-radius:50%;background:#9a9a9a;display:block}
+.chat .ch-in{position:absolute;left:0;right:0;bottom:0;height:96px;background:#F4EFE7;display:flex;align-items:center;gap:14px;padding:0 18px 10px;border-top:1px solid #e3d9cb}
+.chat .ch-box{flex:1;height:46px;border-radius:24px;background:#fff;border:1px solid #ddd;display:flex;align-items:center;padding-left:18px;color:#9a9a9a;font-size:18px}
+.chat .ch-send{width:46px;height:46px;border-radius:50%;background:#2E8B57}
+.chat .ch-nt{position:absolute;left:14px;right:14px;top:58px;border-radius:24px;background:rgba(246,243,238,.97);box-shadow:0 12px 30px rgba(0,0,0,.18);padding:16px 18px;display:flex;gap:14px;z-index:5;opacity:0}
+.chat .ch-nt img{width:52px;height:52px;border-radius:12px;flex:none}
+.chat .ch-ntx{flex:1}.chat .ch-nh{display:flex;justify-content:space-between;font-size:18px;color:#111}.chat .ch-nh span{font-size:14px;color:#888}
+.chat .ch-nti{font-weight:600;font-size:17px;color:#111;margin-top:2px}.chat .ch-nb{font-size:16px;color:#444;line-height:1.35;margin-top:2px}
+
+/* store badges: <div class="badge dark"><i>…ICONS.apple…</i><div><small>Update on the</small>App Store</div></div> */
+.badge{display:inline-flex;align-items:center;gap:22px;padding:22px 40px;border-radius:30px;font-weight:700;font-size:46px;box-shadow:0 20px 40px rgba(0,0,0,.25)}
+.badge i{font-size:62px;display:flex}.badge small{display:block;font-size:24px;font-weight:500;opacity:.8}
+.badge.dark{background:#000;color:#fff}.badge.light{background:var(--light);color:var(--ink)}
+
+/* glory rays */
+.rays{position:absolute;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(242,193,78,.16) 0deg 5deg,rgba(242,193,78,0) 5deg 18deg);
+  -webkit-mask-image:radial-gradient(circle,#000 0%,rgba(0,0,0,.5) 35%,transparent 68%)}
+/* donut chart */
+.donut{position:absolute}.donut circle{fill:none;stroke-width:22}.donut .bg{stroke:rgba(15,58,147,.12)}.donut .fg{stroke:var(--accent2);stroke-linecap:round}

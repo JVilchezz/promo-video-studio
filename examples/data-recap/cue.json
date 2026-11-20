@@ -1,0 +1,28 @@
+{
+  "duration": 28.0,
+  "style": "uplifting",
+  "bpm": 100,
+  "key": "G",
+  "seed": 31,
+  "sections": [
+    {"start": 0.0,  "energy": 0.25},
+    {"start": 4.4,  "energy": 0.55},
+    {"start": 7.2,  "energy": 0.75},
+    {"start": 10.4, "energy": 0.85},
+    {"start": 15.2, "energy": 0.6, "build": true},
+    {"start": 16.8, "energy": 0.45},
+    {"start": 21.2, "energy": 1.0},
+    {"start": 25.8, "energy": 0.3}
+  ],
+  "hits": [7.0, 21.2],
+  "silence_before": [21.2],
+  "cuts": [4.4, 10.4, 16.8],
+  "end": 25.8,
+  "sfx": [
+    {"type": "riser", "t": 4.8, "dur": 2.2},
+    {"type": "thud", "t": 7.3}, {"type": "thud", "t": 7.6}, {"type": "thud", "t": 7.9},
+    {"type": "pop", "t": 11.3}, {"type": "pop", "t": 11.75}, {"type": "pop", "t": 12.2},
+    {"type": "ding", "t": 14.0, "note": 79},
+    {"type": "sweep", "t": 17.6}
+  ]
+}

@@ -1,0 +1,61 @@
+<!doctype html><html><head><meta charset="utf-8">
+<meta name="pvs-size" content="{{W}}x{{H}}">
+<link rel="stylesheet" href="pvs/base.css">
+<style>
+html,body{width:{{W}}px;height:{{H}}px}
+:root{--dark:#12348F;--dark2:#0A1F5C;--light:#FAF4EC;--accent:#F2C352;--accent2:#C44C3F;--ink:#0F3A93}
+.step{position:absolute;left:880px;width:880px}
+.step .n{font-family:Display;font-size:30px;letter-spacing:6px;color:var(--accent2)}
+.step .t{font-family:Display;font-size:100px;line-height:1.02;color:var(--ink);margin-top:10px}
+.step .d{font-size:32px;font-weight:500;color:#4a4a4a;margin-top:22px;line-height:1.4;max-width:760px}
+</style></head><body>
+
+<!-- Double-brace markers = facts only the client can give. render.py full refuses to render while any double-brace marker is left. -->
+
+<!-- S1 · hook -->
+<div class="S dark" id="s1">
+ <div class="c D" id="a1" style="top:430px;font-size:96px;color:var(--light)">EVERY DAY, THE SAME PROBLEM…</div>
+ <div class="c" id="a2" style="top:570px;font-size:30px;font-weight:500;color:#9FB0D9">A short subtitle that sets the scene</div>
+</div>
+
+<!-- S2 · how it works (phone + steps). The phone screen is plain HTML — or put <img>/video frames inside .screen -->
+<div class="S paper" id="s2">
+ <div class="phone" id="ph" style="left:300px;top:40px"><div class="screen" style="background:linear-gradient(#EEF2FB,#FFFFFF)">
+  <div style="margin:90px 30px 0;font-size:40px;font-weight:700;color:#141414">{{REAL APP SCREEN — or put screen-recording frames here}}</div>
+  <div id="row1" style="margin:30px;height:120px;border-radius:26px;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.08)"></div>
+  <div id="row2" style="margin:0 30px;height:120px;border-radius:26px;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.08)"></div>
+ </div></div>
+ <div class="step" id="st" style="top:330px"><div class="n" id="sn"></div><div class="t" id="stt"></div><div class="d" id="sd"></div></div>
+</div>
+
+<!-- S3 · logo + CTA -->
+<div class="S dark" id="s3">
+ <div class="c D" id="c1" style="top:330px;font-size:220px;color:var(--light)">{{BRAND}}</div>
+ <div class="c D" id="c2" style="top:640px;font-size:66px;color:var(--accent)">LESS WAITING. MORE LIVING.</div>
+ <div class="c" id="c3" style="top:760px;font-size:34px;font-weight:600;color:#C9D3EC">{{URL OR HANDLE}}</div>
+</div>
+
+<script src="pvs/motion.js"></script>
+<script>
+const W={{W}}, H={{H}};
+const SC=[{id:'s1',start:0,end:4.5},{id:'s2',start:4.5,end:19},{id:'s3',start:19,end:26}];
+const END=26, CUTS=SC.map(s=>s.start), DARK=['s1','s3'];
+const STEPS=[['01 / 03 · HOW IT WORKS','ORDER IN\nSECONDS','{{REAL STEP 1 — from the client}}'],
+             ['02 / 03 · HOW IT WORKS','PAY YOUR\nWAY','{{REAL STEP 2 — only payment methods that exist}}'],
+             ['03 / 03 · HOW IT WORKS','PICK IT UP.\nNO LINE.','{{REAL STEP 3}}']];
+const SD=4.8;
+overlays({W,H});
+document.fonts.ready.then(()=>fit('c1',W-240));   // long brand names shrink to one line
+ready([]);
+window.R=function(t){
+  const cur=scenes(SC,t);
+  if(t<5.3){ rise('a1',t,.4,50); rise('a2',t,1.2,20); }
+  if(t>=4.5&&t<19.8){ const k=t-4.5, si=Math.min(STEPS.length-1,Math.floor(k/SD)), s=STEPS[si], t0=4.5+si*SD, out=si<STEPS.length-1?t0+SD-.45:null;
+    $('ph').style.transform=`translateY(${(1-ease.inOut4(k/1.0))*900-8*Math.sin(t*1.1)}px) rotateY(${3*Math.sin(t*.5)}deg)`;
+    if($('sn').dataset.s!=si){ $('sn').dataset.s=si; $('sn').textContent=s[0]; $('stt').innerHTML=s[1].replace('\n','<br>'); $('sd').textContent=s[2]; }
+    rise('sn',t,t0+.25,30,out); rise('stt',t,t0+.4,40,out); rise('sd',t,t0+.65,24,out);
+    pop('row1',t,5.6,.6,30); pop('row2',t,6.0,.6,30); }
+  if(t>=19){ rise('c1',t,19.4,60,null,1.1); rise('c2',t,20.4,30); rise('c3',t,21.0,20); }
+  atmosphere(t,{cuts:CUTS,dark:DARK.includes(cur),end:END});
+};
+</script></body></html>

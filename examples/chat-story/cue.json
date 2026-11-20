@@ -1,0 +1,29 @@
+{
+  "duration": 16.0,
+  "style": "minimal",
+  "bpm": 90,
+  "key": "F",
+  "seed": 23,
+  "sections": [
+    {"start": 0.0,  "energy": 0.12},
+    {"start": 5.33, "energy": 0.25},
+    {"start": 9.33, "energy": 0.35, "build": true},
+    {"start": 12.4, "energy": 0.9},
+    {"start": 14.7, "energy": 0.4}
+  ],
+  "hits": [12.4],
+  "silence_before": [12.4],
+  "cuts": [],
+  "end": 14.7,
+  "sfx": [
+    {"type": "file", "t": 0.9,  "path": "sounds/send.wav",    "gain": 0.8},
+    {"type": "file", "t": 1.9,  "path": "sounds/typing.wav",  "gain": 0.5},
+    {"type": "file", "t": 2.9,  "path": "sounds/receive.wav", "gain": 0.8},
+    {"type": "file", "t": 4.9,  "path": "sounds/send.wav",    "gain": 0.8},
+    {"type": "file", "t": 6.0,  "path": "sounds/typing.wav",  "gain": 0.5},
+    {"type": "file", "t": 7.1,  "path": "sounds/receive.wav", "gain": 0.8},
+    {"type": "file", "t": 9.1,  "path": "sounds/send.wav",    "gain": 0.8},
+    {"type": "file", "t": 10.6, "path": "sounds/notif_marimba.wav", "gain": 1.2},
+    {"type": "write", "t": 13.9, "dur": 1.3}
+  ]
+}

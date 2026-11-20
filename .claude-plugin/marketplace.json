@@ -1,0 +1,22 @@
+{
+  "name": "promo-video-studio",
+  "description": "Agency-quality promo videos and reels made by Claude: motion graphics, original music and sound design, rendered to MP4.",
+  "owner": {
+    "name": "José Vílchez"
+  },
+  "plugins": [
+    {
+      "name": "promo-video-studio",
+      "source": "./plugins/promo-video-studio",
+      "description": "Promo videos, reels and motion graphics (MP4) for any business, even from zero — brand kit, mascot, music, voice-over and captions.",
+      "category": "design",
+      "tags": [
+        "video",
+        "motion-graphics",
+        "reels",
+        "marketing",
+        "music"
+      ]
+    }
+  ]
+}

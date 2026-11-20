@@ -1,0 +1,30 @@
+{
+  "duration": 26.0,
+  "style": "uplifting",
+  "bpm": 104,
+  "key": "A",
+  "seed": 47,
+  "sections": [
+    {"start": 0.0,  "energy": 0.3, "build": true},
+    {"start": 3.2,  "energy": 1.0},
+    {"start": 7.6,  "energy": 0.55},
+    {"start": 13.4, "energy": 0.7},
+    {"start": 20.4, "energy": 0.85},
+    {"start": 24.2, "energy": 0.3}
+  ],
+  "hits": [3.2, 20.4],
+  "silence_before": [3.2],
+  "cuts": [7.6, 20.4],
+  "end": 24.2,
+  "sfx": [
+    {"type": "file", "t": 0.6,  "path": "sounds/whoosh.wav", "gain": 0.7},
+    {"type": "file", "t": 3.5,  "path": "sounds/sparkle_soft.wav", "gain": 0.9},
+    {"type": "file", "t": 9.2,  "path": "sounds/receive.wav", "gain": 0.7},
+    {"type": "file", "t": 9.6,  "path": "sounds/tap.wav", "gain": 0.8},
+    {"type": "file", "t": 13.4, "path": "sounds/send.wav", "gain": 0.7},
+    {"type": "file", "t": 15.6, "path": "sounds/receive.wav", "gain": 0.7},
+    {"type": "file", "t": 18.0, "path": "sounds/success.wav", "gain": 0.9},
+    {"type": "pop", "t": 22.1}, {"type": "pop", "t": 22.5}
+  ],
+  "voice": null
+}

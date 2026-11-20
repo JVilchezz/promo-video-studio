@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.DS_Store
+examples/**/silent.mp4
+examples/**/render.log
+examples/**/*.wav
+examples/**/*_prev.png
+dist/
+grain*.png
+examples/**/sounds/
+examples/**/assets/m_*/
+examples/**/*.mp4

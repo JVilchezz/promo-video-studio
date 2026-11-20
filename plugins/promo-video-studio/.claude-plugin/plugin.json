@@ -1,0 +1,24 @@
+{
+  "name": "promo-video-studio",
+  "displayName": "Promo Video Studio",
+  "version": "1.0.0",
+  "description": "Promo videos and reels (MP4) for any business, even from zero: brand kit, original rigged mascot, motion graphics, original music, ElevenLabs voice with synced captions. Never invents facts.",
+  "author": {
+    "name": "José Vílchez"
+  },
+  "homepage": "https://github.com/JVilchezz/promo-video-studio",
+  "repository": "https://github.com/JVilchezz/promo-video-studio",
+  "license": "MIT",
+  "keywords": [
+    "video",
+    "reels",
+    "motion-graphics",
+    "marketing",
+    "music",
+    "mascot",
+    "elevenlabs",
+    "branding",
+    "playwright",
+    "ffmpeg"
+  ]
+}

@@ -1,0 +1,63 @@
+<!doctype html><html><head><meta charset="utf-8">
+<meta name="pvs-size" content="{{W}}x{{H}}">
+<link rel="stylesheet" href="pvs/base.css">
+<style>
+html,body{width:{{W}}px;height:{{H}}px}
+/* ── brand tokens: replace with the client's colors ── */
+:root{--dark:#12348F;--dark2:#0A1F5C;--light:#FAF4EC;--accent:#F2C352;--accent2:#C44C3F;--ink:#0F3A93}
+</style></head><body>
+
+<!-- Double-brace markers = facts only the client can give (name, numbers, URL, captions). render.py full refuses to render
+     while any double-brace marker is left: fill it with real data or delete that element. Creative copy can be rewritten freely. -->
+
+<!-- S1 · hook (handwritten) -->
+<div class="S dark" id="s1">
+ <div class="c H" id="a1" style="top:800px;font-size:118px;color:var(--light)"><span class="w">Everything started…</span></div>
+ <div class="c kicker" id="a2" style="top:975px;font-size:34px">{{BRAND}} · {{YEAR}}</div>
+</div>
+
+<!-- S2 · headline + polaroid photo -->
+<div class="S paper" id="s2">
+ <div class="c D" id="b1" style="top:200px;font-size:112px;color:var(--ink);line-height:1">ONE IDEA.</div>
+ <div class="c D" id="b2" style="top:330px;font-size:112px;color:var(--accent2);line-height:1">ONE TEAM.</div>
+ <div class="pol" id="b3" style="left:64px;top:560px">
+  <!-- replace with <img src="assets/photo.jpg" style="width:904px;height:678px;object-position:50% 40%"> -->
+  <div style="width:904px;height:678px;background:linear-gradient(160deg,#F6C28B,#E58B6B 45%,#6C5B9E)"></div>
+  <div class="cap" id="b3c"><span class="w">{{REAL CAPTION}}</span></div></div>
+</div>
+
+<!-- S3 · numbers -->
+<div class="S dark" id="s3">
+ <div class="c D" id="c0" style="top:300px;font-size:96px;color:var(--light)">IT'S WORKING</div>
+ <div class="stat" id="c1" style="left:90px;top:560px;width:900px;height:330px;background:var(--accent);color:var(--dark2)"><div class="n" id="c1n">0</div><div class="k">{{WHAT THE REAL NUMBER COUNTS}}</div></div>
+ <div class="stat" id="c2" style="left:90px;top:940px;width:900px;height:330px;background:var(--light);color:var(--ink)"><div class="n">{{REAL FACT}}</div><div class="k">{{ITS SOURCE / LABEL}}</div></div>
+</div>
+
+<!-- S4 · logo + call to action -->
+<div class="S dark" id="s4">
+ <div id="d0" style="position:absolute;left:40px;top:410px;width:1000px;height:1000px;border-radius:50%;background:radial-gradient(circle,rgba(242,193,78,.35),rgba(242,193,78,0) 62%)"></div>
+ <div class="c D" id="d1" style="top:760px;font-size:200px;color:var(--light)">{{BRAND}}</div>
+ <div class="c D" id="d2" style="top:1010px;font-size:60px;color:var(--accent)">THIS IS JUST THE BEGINNING.</div>
+ <div class="c" id="d3" style="top:1110px;font-size:36px;font-weight:600;color:#C9D3EC">{{URL OR HANDLE}}</div>
+</div>
+
+<script src="pvs/motion.js"></script>
+<script>
+const W={{W}}, H={{H}};
+// Scenes. Put cuts on the music's beat grid (beat = 60/bpm) — see cue.json.
+const SC=[{id:'s1',start:0,end:5},{id:'s2',start:5,end:12.5},{id:'s3',start:12.5,end:20},{id:'s4',start:20,end:30}];
+const REAL_NUMBER=0; // {{REAL NUMBER from the client — never invent it}}
+const END=30, CUTS=SC.map(s=>s.start), DARK=['s1','s3','s4'];
+overlays({W,H});
+document.fonts.ready.then(()=>fit('d1',W-160));   // long brand names shrink to one line
+ready([/* every image the video uses, e.g. 'assets/photo.jpg' */]);
+
+window.R=function(t){
+  const cur=scenes(SC,t);
+  if(t<5.9){ write('a1',t,.9,1.6); rise('a2',t,2.4,24); }
+  if(t>=5&&t<13.3){ rise('b1',t,5.3,50); rise('b2',t,5.8,50); drop('b3',t,6.4,-2.5,.7); write('b3c',t,7.6,1.4); }
+  if(t>=12.5&&t<20.8){ rise('c0',t,12.8,50); pop('c1',t,13.6); counter('c1n',t,13.6,1.4,0,REAL_NUMBER,v=>Math.round(v).toLocaleString('en-US')); pop('c2',t,14.2); }
+  if(t>=20){ $('d0').style.opacity=ease.out4((t-20.2)/1.5); rise('d1',t,20.4,60,null,1.1); rise('d2',t,21.4,30); rise('d3',t,22.0,20); }
+  atmosphere(t,{cuts:CUTS,dark:DARK.includes(cur),end:END});
+};
+</script></body></html>
